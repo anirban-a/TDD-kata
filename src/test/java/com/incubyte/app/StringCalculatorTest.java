@@ -47,7 +47,8 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers() throws NegativeNumberException {
+  public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers()
+      throws NegativeNumberException {
     // Arrange
     String numbers = "1,2";
     int expected = 3;
@@ -57,7 +58,8 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithManyNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
+  public void testAddGivenStringWithManyNumbersShouldReturnSumOfTheNumbers()
+      throws NegativeNumberException {
     // Arrange
     String numbers = "1,2,4,1";
     int expected = 8;
@@ -67,7 +69,8 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithNewLinesBetweenNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
+  public void testAddGivenStringWithNewLinesBetweenNumbersShouldReturnSumOfTheNumbers()
+      throws NegativeNumberException {
     // Arrange
     String numbers = "1\n2";
     int expected = 3;
@@ -77,7 +80,8 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithNewLinesAndCommaBetweenNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
+  public void testAddGivenStringWithNewLinesAndCommaBetweenNumbersShouldReturnSumOfTheNumbers()
+      throws NegativeNumberException {
     // Arrange
     String numbers = "1\n2,3";
     int expected = 6;
@@ -87,7 +91,8 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithDifferentDelimitersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
+  public void testAddGivenStringWithDifferentDelimitersShouldReturnSumOfTheNumbers()
+      throws NegativeNumberException {
     // Arrange
     String numbers = "//;\n1;2";
     int expected = 3;
@@ -103,7 +108,7 @@ public class StringCalculatorTest {
     String errorMessage = "negatives not allowed";
     exceptionRule.expect(NegativeNumberException.class);
     exceptionRule.expectMessage(errorMessage);
-    
+
     // Act and Assert
     calculator.add(numbers);
   }
@@ -115,16 +120,19 @@ public class StringCalculatorTest {
     String errorMessage = "negatives not allowed: [-1,-2]";
     exceptionRule.expect(NegativeNumberException.class);
     exceptionRule.expectMessage(errorMessage);
-    
+
     // Act and Assert
     calculator.add(numbers);
   }
-  
+
   @Test
-  public void testGetCalledCount() {
+  public void testGetCalledCount() throws NegativeNumberException {
     // Arrange
-    int expectedCalledCount = 11;
-    
+    int expectedCalledCount = 1;
+
+    // Act
+    calculator.add("");
+
     // Assert
     assertEquals(expectedCalledCount, calculator.getCalledCount());
   }

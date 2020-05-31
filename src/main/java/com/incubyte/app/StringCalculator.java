@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class StringCalculator {
 
+  private static int calledCount=0;
   public int add(String numbers) throws NegativeNumberException {
+    calledCount++;
     if (numbers.isEmpty())
       return 0;
     if (numbers.length() == 1) {
@@ -73,6 +75,6 @@ public class StringCalculator {
   }
 
   public int getCalledCount() {
-    return 0;
+    return calledCount;
   }
 }

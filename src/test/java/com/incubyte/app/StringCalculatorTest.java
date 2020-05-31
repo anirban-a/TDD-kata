@@ -119,4 +119,13 @@ public class StringCalculatorTest {
     // Act and Assert
     calculator.add(numbers);
   }
+  
+  @Test
+  public void testGetCalledCount() {
+    // Arrange
+    int expectedCalledCount = 11;
+    
+    // Assert
+    assertEquals(expectedCalledCount, calculator.getCalledCount());
+  }
 }

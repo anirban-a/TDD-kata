@@ -72,4 +72,7 @@ public class StringCalculator {
     return build.toString();
   }
 
+  public int getCalledCount() {
+    return 0;
+  }
 }

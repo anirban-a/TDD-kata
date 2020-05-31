@@ -18,7 +18,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenEmptyStringReturnZero() {
+  public void testAddGivenEmptyStringReturnZero() throws NegativeNumberException {
     // Arrange
     String numbers = "";
 
@@ -27,7 +27,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithOneNumberShouldReturnSame() {
+  public void testAddGivenStringWithOneNumberShouldReturnSame() throws NegativeNumberException {
     // Arrange
     String numbers = "1";
     int expected = 1;
@@ -37,7 +37,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithOneNonIntegerShouldReturnZero() {
+  public void testAddGivenStringWithOneNonIntegerShouldReturnZero() throws NegativeNumberException {
     // Arrange
     String numbers = "?";
     int expected = 0;
@@ -47,7 +47,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers() {
+  public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers() throws NegativeNumberException {
     // Arrange
     String numbers = "1,2";
     int expected = 3;
@@ -57,7 +57,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithManyNumbersShouldReturnSumOfTheNumbers() {
+  public void testAddGivenStringWithManyNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
     // Arrange
     String numbers = "1,2,4,1";
     int expected = 8;
@@ -67,7 +67,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithNewLinesBetweenNumbersShouldReturnSumOfTheNumbers() {
+  public void testAddGivenStringWithNewLinesBetweenNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
     // Arrange
     String numbers = "1\n2";
     int expected = 3;
@@ -77,7 +77,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithNewLinesAndCommaBetweenNumbersShouldReturnSumOfTheNumbers() {
+  public void testAddGivenStringWithNewLinesAndCommaBetweenNumbersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
     // Arrange
     String numbers = "1\n2,3";
     int expected = 6;
@@ -87,7 +87,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddGivenStringWithDifferentDelimitersShouldReturnSumOfTheNumbers() {
+  public void testAddGivenStringWithDifferentDelimitersShouldReturnSumOfTheNumbers() throws NegativeNumberException {
     // Arrange
     String numbers = "//;\n1;2";
     int expected = 3;
@@ -97,7 +97,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void testAddThrowsExceptionWithNegativeInteger() {
+  public void testAddThrowsExceptionWithNegativeInteger() throws NegativeNumberException {
     // Arrange
     String numbers = "-1";
     String errorMessage = "negatives not allowed";

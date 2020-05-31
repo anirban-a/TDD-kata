@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class StringCalculator {
 
-  private static int calledCount=0;
+  private static int calledCount = 0;
+
   public int add(String numbers) throws NegativeNumberException {
     calledCount++;
     if (numbers.isEmpty())
@@ -43,7 +44,9 @@ public class StringCalculator {
       throw new NegativeNumberException(errorMessage);
     }
     return Arrays.stream(numbers.split(pattern)).mapToInt(Integer::parseInt).filter((e) -> e >= 0)
-        .toArray();
+        .map(e -> {
+          return e >= 1000 ? 0 : e;
+        }).toArray();
   }
 
   private String checkAndSanitizeDelimiterDefinition(String numbers) {

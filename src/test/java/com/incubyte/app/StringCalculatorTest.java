@@ -141,7 +141,7 @@ public class StringCalculatorTest {
   public void testNumberBiggerThanThousandIsIgnored() throws NegativeNumberException {
     // Arrange
     String numbers = "1,1001";
-    String expected = "1";
+    int expected = 1;
 
     // Assert
     assertEquals(expected, calculator.add(numbers));

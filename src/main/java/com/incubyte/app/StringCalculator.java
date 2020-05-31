@@ -23,6 +23,7 @@ public class StringCalculator {
   }
 
   private int[] mapStringToArrayOfNumbers(String numbers) {
-    return Arrays.stream(numbers.split(",")).mapToInt(Integer::parseInt).toArray();
+    String pattern = "\\n";
+    return Arrays.stream(numbers.split(pattern)).mapToInt(Integer::parseInt).toArray();
   }
 }

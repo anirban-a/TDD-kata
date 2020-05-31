@@ -17,10 +17,18 @@ public class StringCalculatorTest {
     String numbers = "";
     assertEquals(0, calculator.add(numbers));
   }
-  
+
   @Test
   public void testAddGivenStringWithOneNumberShouldReturnSame() {
-    String numbers= "1";
-    assertEquals(1, calculator.add(numbers));
+    String numbers = "1";
+    int expected = 1;
+    assertEquals(expected, calculator.add(numbers));
+  }
+
+  @Test
+  public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers() {
+    String numbers = "1,2";
+    int expected = 3;
+    assertEquals(expected, calculator.add(numbers));
   }
 }

@@ -1,6 +1,8 @@
 package com.incubyte.app;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StringCalculator {
 
@@ -24,23 +26,26 @@ public class StringCalculator {
     }
     int sum = 0;
     // String delim = getDelimiter(numbers);
-    String delim;
-    if (multiLengthDelimiterExists(numbers))
-      delim = getMultiLengthDelimiter(numbers);
-    else
-      delim = getDelimiter(numbers);
+    // String delim;
+    // if (multiLengthDelimiterExists(numbers))
+    // delim = getMultiLengthDelimiter(numbers);
+    // else
+    // delim = getDelimiter(numbers);
+    String[] delimiters = getDelimiters(numbers);
     numbers = checkAndSanitizeDelimiterDefinition(numbers);
-    int[] nums = mapStringToArrayOfNumbers(numbers, delim);
+    int[] nums = mapStringToArrayOfNumbers(numbers, delimiters);
     for (int number : nums)
       sum += number;
     return sum;
   }
 
-  private int[] mapStringToArrayOfNumbers(String numbers, String delim)
+  private int[] mapStringToArrayOfNumbers(String numbers, String[] delimiters)
       throws NegativeNumberException {
     String pattern = ",|\n";
-    if (delim != null && !delim.isEmpty())
-      pattern += "|" + delim;
+    for (int i = 0; i < delimiters.length; i++) {
+      if (!delimiters[i].isEmpty())
+        pattern += "|" + delimiters[i];
+    }
     int[] negatives = Arrays.stream(numbers.split(pattern)).mapToInt(Integer::parseInt)
         .filter((e) -> e < 0).toArray();
     if (negatives.length > 0) {
@@ -76,6 +81,26 @@ public class StringCalculator {
       delim = expr.substring(1, expr.length() - 1);
     }
     return delim;
+  }
+
+  private String[] getDelimiters(String numbers) {
+    List<String> list = new ArrayList<>();
+    if (!multiLengthDelimiterExists(numbers))
+      return new String[] {getDelimiter(numbers)};
+    else {
+      String expr = numbers.split("\n")[0];
+      StringBuilder builder = null;
+      for (int i = 0; i < expr.length(); i++) {
+        if (expr.charAt(i) == '[') {
+          builder = new StringBuilder();
+        } else if (expr.charAt(i) == ']') {
+          list.add(builder.toString());
+          builder = null;
+        } else if (builder != null)
+          builder.append(expr.charAt(i));
+      }
+    }
+    return list.toArray(new String[] {});
   }
 
   private boolean multiLengthDelimiterExists(String numbers) {

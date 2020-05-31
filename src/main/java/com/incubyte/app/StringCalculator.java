@@ -1,5 +1,7 @@
 package com.incubyte.app;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
   public int add(String numbers) {
@@ -13,6 +15,14 @@ public class StringCalculator {
       }
       return result;
     }
-    return 0;
+    int sum = 0;
+    int[] nums = mapStringToArrayOfNumbers(numbers);
+    for (int number : nums)
+      sum += number;
+    return sum;
+  }
+
+  private int[] mapStringToArrayOfNumbers(String numbers) {
+    return Arrays.stream(numbers.split(",")).mapToInt(Integer::parseInt).toArray();
   }
 }

@@ -71,4 +71,13 @@ public class StringCalculatorTest {
     assertEquals(expected, calculator.add(numbers));
   }
 
+  @Test
+  public void testAddGivenStringWithNewLinesAndCommaBetweenNumbersShouldReturnSumOfTheNumbers() {
+    // Arrange
+    String numbers = "1\n2,3";
+    int expected = 6;
+
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
 }

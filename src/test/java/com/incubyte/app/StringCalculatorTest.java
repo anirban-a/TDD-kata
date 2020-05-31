@@ -151,7 +151,7 @@ public class StringCalculatorTest {
   public void testAddGivenStringWithAnyLengthDelimiterShouldReturnSumOfTheNumbers()
       throws NegativeNumberException {
     // Arrange
-    String numbers = "//;;;\n1;;;2";
+    String numbers = "//[;;;]\n1;;;2";
     int expected = 3;
 
     // Assert

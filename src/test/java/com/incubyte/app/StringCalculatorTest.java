@@ -16,7 +16,7 @@ public class StringCalculatorTest {
   public void testAddGivenEmptyStringReturnZero() {
     // Arrange
     String numbers = "";
-    
+
     // Assert
     assertEquals(0, calculator.add(numbers));
   }
@@ -26,7 +26,7 @@ public class StringCalculatorTest {
     // Arrange
     String numbers = "1";
     int expected = 1;
-    
+
     // Assert
     assertEquals(expected, calculator.add(numbers));
   }
@@ -36,7 +36,7 @@ public class StringCalculatorTest {
     // Arrange
     String numbers = "?";
     int expected = 0;
-    
+
     // Assert
     assertEquals(expected, calculator.add(numbers));
   }
@@ -46,8 +46,29 @@ public class StringCalculatorTest {
     // Arrange
     String numbers = "1,2";
     int expected = 3;
-    
+
     // Assert
     assertEquals(expected, calculator.add(numbers));
   }
+
+  @Test
+  public void testAddGivenStringWithManyNumbersShouldReturnSumOfTheNumbers() {
+    // Arrange
+    String numbers = "1,2,4,1";
+    int expected = 8;
+
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
+
+  @Test
+  public void testAddGivenStringWithNewLinesBetweenNumbersShouldReturnSumOfTheNumbers() {
+    // Arrange
+    String numbers = "1\n2";
+    int expected = 3;
+
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
+
 }

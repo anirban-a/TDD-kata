@@ -128,7 +128,7 @@ public class StringCalculatorTest {
   @Test
   public void testGetCalledCount() throws NegativeNumberException {
     // Arrange
-    int expectedCalledCount = 1;
+    int expectedCalledCount = calculator.getCalledCount()+1;
 
     // Act
     calculator.add("");

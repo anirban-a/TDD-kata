@@ -14,21 +14,40 @@ public class StringCalculatorTest {
 
   @Test
   public void testAddGivenEmptyStringReturnZero() {
+    // Arrange
     String numbers = "";
+    
+    // Assert
     assertEquals(0, calculator.add(numbers));
   }
 
   @Test
   public void testAddGivenStringWithOneNumberShouldReturnSame() {
+    // Arrange
     String numbers = "1";
     int expected = 1;
+    
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
+
+  @Test
+  public void testAddGivenStringWithOneNonIntegerShouldReturnZero() {
+    // Arrange
+    String numbers = "?";
+    int expected = 0;
+    
+    // Assert
     assertEquals(expected, calculator.add(numbers));
   }
 
   @Test
   public void testAddGivenStringWithTwoNumbersShouldReturnSumOfTwoNumbers() {
+    // Arrange
     String numbers = "1,2";
     int expected = 3;
+    
+    // Assert
     assertEquals(expected, calculator.add(numbers));
   }
 }

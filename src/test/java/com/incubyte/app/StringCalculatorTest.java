@@ -107,4 +107,16 @@ public class StringCalculatorTest {
     // Act and Assert
     calculator.add(numbers);
   }
+
+  @Test
+  public void testAddThrowsExceptionWithMultipleNegativeIntegers() throws NegativeNumberException {
+    // Arrange
+    String numbers = "-1,3,-2";
+    String errorMessage = "negatives not allowed: [-1,-2]";
+    exceptionRule.expect(NegativeNumberException.class);
+    exceptionRule.expectMessage(errorMessage);
+    
+    // Act and Assert
+    calculator.add(numbers);
+  }
 }

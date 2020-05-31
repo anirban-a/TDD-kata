@@ -2,10 +2,15 @@ package com.incubyte.app;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StringCalculatorTest {
   private StringCalculator calculator;
+
+  @Rule
+  public ExpectedException exceptionRule = ExpectedException.none();
 
   @Before
   public void setUp() {
@@ -89,5 +94,17 @@ public class StringCalculatorTest {
 
     // Assert
     assertEquals(expected, calculator.add(numbers));
+  }
+
+  @Test
+  public void testAddThrowsExceptionWithNegativeInteger() {
+    // Arrange
+    String numbers = "-1";
+    String errorMessage = "negatives not allowed";
+    exceptionRule.expect(NegativeNumberException.class);
+    exceptionRule.expectMessage(errorMessage);
+    
+    // Act and Assert
+    calculator.add(numbers);
   }
 }

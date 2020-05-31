@@ -16,6 +16,7 @@ public class StringCalculator {
       return result;
     }
     int sum = 0;
+    numbers = checkAndSanitizeDelimeterDefinition(numbers);
     int[] nums = mapStringToArrayOfNumbers(numbers);
     for (int number : nums)
       sum += number;
@@ -23,7 +24,14 @@ public class StringCalculator {
   }
 
   private int[] mapStringToArrayOfNumbers(String numbers) {
-    String pattern = "\\n|,";
+    String pattern = "\\D";
     return Arrays.stream(numbers.split(pattern)).mapToInt(Integer::parseInt).toArray();
+  }
+
+  private String checkAndSanitizeDelimeterDefinition(String numbers) {
+    if (numbers.substring(0, 3).matches("//(\\D){1,1}")) {
+      return numbers.split("\n")[1];
+    }
+    return numbers;
   }
 }

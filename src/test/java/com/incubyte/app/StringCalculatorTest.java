@@ -157,4 +157,15 @@ public class StringCalculatorTest {
     // Assert
     assertEquals(expected, calculator.add(numbers));
   }
+
+  @Test
+  public void testAddGivenStringWithMultipleDelimitersShouldReturnSumOfTheNumbers()
+      throws NegativeNumberException {
+    // Arrange
+    String numbers = "//[;][,]\n1;2,3";
+    int expected = 6;
+
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
 }

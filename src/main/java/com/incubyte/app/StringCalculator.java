@@ -25,12 +25,6 @@ public class StringCalculator {
       throw new NegativeNumberException("negatives not allowed");
     }
     int sum = 0;
-    // String delim = getDelimiter(numbers);
-    // String delim;
-    // if (multiLengthDelimiterExists(numbers))
-    // delim = getMultiLengthDelimiter(numbers);
-    // else
-    // delim = getDelimiter(numbers);
     String[] delimiters = getDelimiters(numbers);
     numbers = checkAndSanitizeDelimiterDefinition(numbers);
     int[] nums = mapStringToArrayOfNumbers(numbers, delimiters);
@@ -70,15 +64,6 @@ public class StringCalculator {
     String delim = "";
     if (numbers.substring(0, 3).matches("//(\\D){1,1}")) {
       delim = numbers.split("\n")[0].split("//")[1];
-    }
-    return delim;
-  }
-
-  private String getMultiLengthDelimiter(String numbers) {
-    String delim = "";
-    if (numbers.substring(0, 3).equals("//[")) {
-      String expr = numbers.split("\n")[0].split("//")[1];
-      delim = expr.substring(1, expr.length() - 1);
     }
     return delim;
   }

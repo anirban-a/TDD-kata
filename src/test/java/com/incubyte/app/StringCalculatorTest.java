@@ -80,4 +80,14 @@ public class StringCalculatorTest {
     // Assert
     assertEquals(expected, calculator.add(numbers));
   }
+
+  @Test
+  public void testAddGivenStringWithDifferentDelimitersShouldReturnSumOfTheNumbers() {
+    // Arrange
+    String numbers = "//;\n1;2";
+    int expected = 3;
+
+    // Assert
+    assertEquals(expected, calculator.add(numbers));
+  }
 }
